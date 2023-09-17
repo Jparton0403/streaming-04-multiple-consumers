@@ -1,4 +1,6 @@
-# streaming-04-multiple-consumers
+#Joshua Partons attempt at streaming-04-multiple-consumers
+
+utilzing the three different listeners
 
 > Use RabbitMQ to distribute tasks to multiple workers
 

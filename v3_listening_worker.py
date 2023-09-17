@@ -12,7 +12,7 @@ import sys
 import time
 
 # define a callback function to be called when a message is received
-def callback(ch, method, properties, body):
+def joshCallback(ch, method, properties, body):
     """ Define behavior on getting a message."""
     # decode the binary message body to a string
     print(f" [x] Received {body.decode()}")
@@ -65,9 +65,9 @@ def main(hn: str = "localhost", qn: str = "task_queue"):
         channel.basic_qos(prefetch_count=1) 
 
         # configure the channel to listen on a specific queue,  
-        # use the callback function named callback,
+        # use the callback function named joshcallback,
         # and do not auto-acknowledge the message (let the callback handle it)
-        channel.basic_consume( queue=qn, on_message_callback=callback)
+        channel.basic_consume( queue=qn, on_message_callback=joshCallback)
 
         # print a message to the console for the user
         print(" [*] Ready for work. To exit press CTRL+C")

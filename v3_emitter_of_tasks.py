@@ -17,10 +17,10 @@ def offer_rabbitmq_admin_site():
     ans = input("Would you like to monitor RabbitMQ queues? y or n ")
     print()
     if ans.lower() == "y":
-        webbrowser.open_new("http://localhost:15672/#/queues")
+        webbrowser.open_new("http://localhost:8080/#/queues")
         print()
 
-def send_message(host: str, queue_name: str, message: str):
+def send_message(host: str, queue_josh: str, message: str):
     """
     Creates and sends a message to the queue each execution.
     This process runs and finishes.
@@ -39,10 +39,10 @@ def send_message(host: str, queue_name: str, message: str):
         # a durable queue will survive a RabbitMQ server restart
         # and help ensure messages are processed in order
         # messages will not be deleted until the consumer acknowledges
-        ch.queue_declare(queue=queue_name, durable=True)
+        ch.queue_declare(queue=queue_josh, durable=True)
         # use the channel to publish a message to the queue
         # every message passes through an exchange
-        ch.basic_publish(exchange="", routing_key=queue_name, body=message)
+        ch.basic_publish(exchange="", routing_key=queue_josh, body=message)
         # print a message to the console for the user
         print(f" [x] Sent {message}")
     except pika.exceptions.AMQPConnectionError as e:

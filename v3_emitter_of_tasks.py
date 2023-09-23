@@ -17,7 +17,7 @@ def offer_rabbitmq_admin_site():
     ans = input("Would you like to monitor RabbitMQ queues? y or n ")
     print()
     if ans.lower() == "y":
-        webbrowser.open_new("http://localhost:8080/#/queues")
+        webbrowser.open_new("http://localhost:15672/#/queues")
         print()
 
 def send_message(host: str, queue_josh: str, message: str):
@@ -27,7 +27,7 @@ def send_message(host: str, queue_josh: str, message: str):
 
     Parameters:
         host (str): the host name or IP address of the RabbitMQ server
-        queue_name (str): the name of the queue
+        queue_josh (str): the name of the queue
         message (str): the message to be sent to the queue
     """
     try:
